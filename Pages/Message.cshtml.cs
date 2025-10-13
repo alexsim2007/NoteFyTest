@@ -8,17 +8,32 @@ using Microsoft.Extensions.Logging;
 
 namespace ThirdTry.Pages
 {
-    public class Message : PageModel
+    public class MessageIndex : PageModel
     {
-        private readonly ILogger<Message> _logger;
 
-        public Message(ILogger<Message> logger)
-        {
-            _logger = logger;
-        }
+        [BindProperty]
+        public string Message { get; set; } = string.Empty;
+
+        public string DisplayMessage { get; set; } = string.Empty;
 
         public void OnGet()
         {
+
+        }
+
+        public IActionResult OnPost()
+        {
+            // Функция вывода текста
+            if (!string.IsNullOrEmpty(Message))
+            {
+                DisplayMessage = Message;
+            }
+            else
+            {
+                DisplayMessage = "ничего :(";
+            }
+
+            return Page();
         }
     }
 }
