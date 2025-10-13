@@ -59,6 +59,7 @@ namespace ThirdTry
         private async void CreateWindow()
         {
             var window = await Electron.WindowManager.CreateWindowAsync();
+            window.SetAutoHideMenuBar(true);
             window.OnClosed += () =>
             {
                 Electron.App.Quit();
