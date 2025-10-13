@@ -62,14 +62,14 @@ namespace ThirdTry
             var window = await Electron.WindowManager.CreateWindowAsync(new BrowserWindowOptions
             {
                 // Текущий размер окна
-                Width = 1200,
-                Height = 800,
+                Width = 1920,
+                Height = 1080,
                 
                 // ⭐ ОГРАНИЧЕНИЯ МАСШТАБИРОВАНИЯ ⭐
-                MinWidth = 600,     // Минимальная ширина
-                MinHeight = 400,    // Минимальная высота  
-                MaxWidth = 1920,    // Максимальная ширина
-                MaxHeight = 1080,   // Максимальная высота
+                MinWidth = 800,     // Минимальная ширина
+                MinHeight = 800,    // Минимальная высота  
+                MaxWidth = 2560,    // Максимальная ширина
+                MaxHeight = 1440,   // Максимальная высота
                 
                 // Дополнительные настройки поведения
                 Resizable = true,       // Разрешить изменение размера
