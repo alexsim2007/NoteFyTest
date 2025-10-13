@@ -1,0 +1,33 @@
+@page
+@model ThirdTry.Pages.MessageIndex
+@{
+    ViewData["Title"] = "Привет!";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <p>Введите свой классный текст внутрь окна:</p>
+    
+</div>
+<div class="container">
+    
+    <div class="content">
+        <p>Поле для ввода текста ниже:</p>
+        
+        <form method="post">
+            <div class="form-group">
+                <label>Введите текст:</label>
+                <input type="text" class="form-control" name="message">
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Отправить</button>
+        </form>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.DisplayMessage))
+{
+    <div class="mt-3">
+        <strong>Вы ввели:</strong> @Model.DisplayMessage
+    </div>
+}
