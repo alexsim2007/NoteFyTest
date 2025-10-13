@@ -64,31 +64,33 @@ namespace ThirdTry
                 // Текущий размер окна
                 Width = 1920,
                 Height = 1080,
-                
+
                 // ⭐ ОГРАНИЧЕНИЯ МАСШТАБИРОВАНИЯ ⭐
                 MinWidth = 800,     // Минимальная ширина
                 MinHeight = 800,    // Минимальная высота  
                 MaxWidth = 2560,    // Максимальная ширина
                 MaxHeight = 1440,   // Максимальная высота
-                
+
                 // Дополнительные настройки поведения
                 Resizable = true,       // Разрешить изменение размера
                 Maximizable = true,     // Разрешить максимизацию
                 Minimizable = true,     // Разрешить минимизацию
                 Fullscreenable = true, // Запретить полноэкранный режим
-                
+
                 // Центрирование окна
                 Center = true,
-                
+
                 // Другие настройки (опционально)
                 Show = true,           // Не показывать сразу
-                Title = "ThirdTry"      // Заголовок окна
+                Title = "ThirdTry",      // Заголовок окна
+                AutoHideMenuBar = true
             });
+            
     
-            window.SetAutoHideMenuBar(true);
             window.OnClosed += () =>
             {
                 Electron.App.Quit();
+                Electron.App.Exit();
             };
         }
     }
