@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using ElectronNET.API;
+using ThirdTry.Pages;
 
 namespace ThirdTry
 {
@@ -41,6 +42,11 @@ namespace ThirdTry
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+
+                endpoints.MapGet("/", async context =>
+                    {
+                        context.Response.Redirect("/EmptyPage");
+                    });
             }
             );
 
