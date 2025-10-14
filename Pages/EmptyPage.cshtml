@@ -1,0 +1,237 @@
+@page
+@model NoteFyTest.Pages.EmptyPageModel
+@{
+    ViewData["Title"] = "EmptyPage";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Пустая страница</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(35, 35, 35);
+            font-family: Arial, sans-serif;
+        }
+
+        .top-bar {
+            position: fixed;
+            width: 100%;
+            height: 20px;
+            top: 0;
+            left: 0;
+            background-color: rgb(43, 43, 43);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 40px;
+            margin-right: 5px;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .icon-button:hover {
+            background-color: rgba(60, 60, 60, 0.1);
+        }
+
+        .icon-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .content {
+            margin-top: 80px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .new-note {
+            position: absolute;
+            width: 35vw;
+            height: 45vh;
+            left: 19vw;
+            top: 36vh;
+        }
+
+        .note-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #303030;
+            border-radius: 30px;
+        }
+
+        .note-input-area {
+            position: absolute;
+            width: 96%;
+            height: 67%;
+            left: 2%;
+            top: 30%;
+            background: #393939;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .text-input {
+            width: 90%;
+            height: 80%;
+            background: transparent;
+            border: none;
+            font-family: 'Century Gothic';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 2vw;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: #B9B9B9;
+            resize: none;
+            outline: none;
+        }
+
+        .text-input::placeholder {
+            color: #B9B9B9;
+        }
+
+        .note-title-input {
+            position: absolute;
+            width: 65%;
+            left: 5%;
+            top: 10%;
+            font-family: 'Century Gothic';
+            font-weight: 700;
+            font-size: 2.7vw;
+            color: #B9B9B9;
+            background: transparent;
+            border: none;
+            outline: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 0;
+            margin: 0;
+        }
+
+        .plus-icon {
+            position: absolute;
+            width: 2.5vw;
+            height: 2.5vw;
+            left: 85%;
+            top: 12%;
+        }
+
+        .icon {
+            position: absolute;
+            width: 58%;
+            height: 58%;
+            left: 21%;
+            top: 21%;
+            border: 0.3vw solid #BABABA;
+        }
+
+        .greeting-container {
+            position: absolute;
+            width: 80vw;
+            height: 30vh;
+            left: 19vw;
+            top: 4vh;
+        }
+
+        .rectangle-3 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #303030;
+            border-radius: 30px;
+        }
+
+        .rectangle-4 {
+            position: absolute;
+            width: 97%;
+            height: 35%;
+            left: 1%;
+            top: 63%;
+            background: #262626;
+            border-radius: 30px;
+        }
+
+        .welcome-text {
+            position: absolute;
+            width: 60%;
+            left: 3%;
+            top: 65%;
+            font-family: 'Century Gothic', sans-serif;
+            font-weight: 400;
+            font-size: 4vw;
+            color: #FFFFFF;
+            margin: 0;
+            line-height: 1.2;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="top-bar">
+        <!-- Логотип -->
+        <button class="icon-button" title="Меню">
+            <img src="/Images/x_warning_badged_outline_icon_142947.png" alt="Меню" />
+        </button>
+        <!-- Иконка-кнопка -->
+        <button class="icon-button" title="Меню">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M3 12h18M3 6h18M3 18h18" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
+    </nav>
+
+    <div class="greeting-container">
+        <div class="rectangle-3"></div>
+        <div class="rectangle-4"></div>
+        <div class="welcome-text">Добро пожаловать!</div>
+    </div>
+
+    <div class="new-note">
+        <div class="note-container"></div>
+        <div class="note-input-area">
+            <textarea class="text-input" placeholder="Введите текст"></textarea>
+        </div>
+        <input type="text" class="note-title-input" value="Новая заметка" maxlength="20">
+        <div class="plus-icon">
+            <div class="icon"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

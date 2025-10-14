@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using ElectronNET.API;
+using ElectronNET.API.Entities;
+using ThirdTry.Pages;
 
 namespace ThirdTry
 {
@@ -41,6 +43,11 @@ namespace ThirdTry
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+
+                endpoints.MapGet("/", async context =>
+                    {
+                        context.Response.Redirect("/EmptyPage");
+                    });
             }
             );
 
@@ -52,10 +59,38 @@ namespace ThirdTry
 
         private async void CreateWindow()
         {
-            var window = await Electron.WindowManager.CreateWindowAsync();
+            var window = await Electron.WindowManager.CreateWindowAsync(new BrowserWindowOptions
+            {
+                // Текущий размер окна
+                Width = 1920,
+                Height = 1080,
+
+                // ⭐ ОГРАНИЧЕНИЯ МАСШТАБИРОВАНИЯ ⭐
+                MinWidth = 800,     // Минимальная ширина
+                MinHeight = 800,    // Минимальная высота  
+                MaxWidth = 2560,    // Максимальная ширина
+                MaxHeight = 1440,   // Максимальная высота
+
+                // Дополнительные настройки поведения
+                Resizable = true,       // Разрешить изменение размера
+                Maximizable = true,     // Разрешить максимизацию
+                Minimizable = true,     // Разрешить минимизацию
+                Fullscreenable = true, // Запретить полноэкранный режим
+
+                // Центрирование окна
+                Center = true,
+
+                // Другие настройки (опционально)
+                Show = true,           // Не показывать сразу
+                Title = "ThirdTry",      // Заголовок окна
+                AutoHideMenuBar = true
+            });
+            
+    
             window.OnClosed += () =>
             {
                 Electron.App.Quit();
+                Electron.App.Exit();
             };
         }
     }
