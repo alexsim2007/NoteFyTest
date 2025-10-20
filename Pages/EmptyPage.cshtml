@@ -1,4 +1,5 @@
 @page
+@using NoteFyTest.Pages
 @model NoteFyTest.Pages.EmptyPageModel
 @{
     ViewData["Title"] = "EmptyPage";
@@ -202,6 +203,9 @@
 </head>
 
 <body>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-page="/Message">Сохранить текст</a>
+    </li>
     <nav class="top-bar">
         <!-- Логотип -->
         <button class="icon-button" title="Меню">
@@ -224,14 +228,55 @@
     <div class="new-note">
         <div class="note-container"></div>
         <div class="note-input-area">
-            <textarea class="text-input" placeholder="Введите текст"></textarea>
+        <form method="post">
+                <textarea name="Text" class="text-input" placeholder="Введите текст">@Model.Text</textarea>
+                <button type="submit" style="
+                    position: absolute;
+                    bottom: 10px;
+                    right: 10px;
+                    background: #bbbbbb;
+                    color: white;
+                    border: none;
+                    padding: 8px 16px;
+                    border-radius: 5px;
+                    cursor: pointer;">
+                    Сохранить
+                </button>
+            </form>
         </div>
         <input type="text" class="note-title-input" value="Новая заметка" maxlength="20">
         <div class="plus-icon">
             <div class="icon"></div>
         </div>
     </div>
-
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div data-auto-hide style="
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 10000;
+            transition: opacity 0.5s ease;">
+            @Model.Message
+        </div>
+    }
+    <script>
+    // Автоматическое скрытие сообщения через 3 секунды
+    document.addEventListener('DOMContentLoaded', function() {
+        const messageElement = document.querySelector('[data-auto-hide]');
+        if (messageElement) {
+            setTimeout(() => {
+                messageElement.style.opacity = '0';
+                setTimeout(() => messageElement.remove(), 500);
+            }, 3000);
+        }
+    });
+</script>
 </body>
 
 </html>
